@@ -1,11 +1,23 @@
 
 #function 1
 
+import tkinter as tk
+
+board = [['', '', ''],
+         ['', '', ''],
+         ['', '', '']]
+
 def display_board(board):
   """  this function would take a 3x3 list representing the
   tic-tac-toe board and print it out to the console in a user-friendly 
   format """
-  pass
+  root = tk.Tk()
+    root.title("Board")
+    for row in range(len(board)):
+        for col in range(len(board[row])):
+            label = tk.Label(root, text=board[row][col], font=("Arial", 24), width=3, height=1, borderwidth=1, relief="solid")
+            label.grid(row=row, column=col)
+    root.mainloop()
 
 def get_player_move(board, player):
   """this function would prompt the user for their move,
@@ -31,7 +43,7 @@ def check_tie(board):
 
 def reset_board():
   """Set the board to the initial state after each game"""
-  pass
+   display_board(board)
 
 def play_again():
   """this function would prompt the user if they want to 
