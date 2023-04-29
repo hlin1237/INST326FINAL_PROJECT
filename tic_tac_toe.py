@@ -31,18 +31,34 @@ def get_computer_move(board, player):
   pass
   
 def check_win(board):
-  """ this function would check if either player has won the game
+    """ this function would check if either player has won the game
   by checking all possible win conditions (3 in a row horizontally,
   vertically, or diagonally)."""
-  pass
+    
+    for row in board:
+        if row[0] == row[1] == row[2] != '':
+            return True
+        
+    for col in range(len(board[0])):
+        if board[0][col] == board[1][col] == board[2][col] != '':
+            return True
+        
+    if board[0][0] == board[1][1] == board[2][2] != '' or board[0][2] == board[1][1] == board[2][0] != '':
+        return True
+    
+    return False
 
 def check_tie(board):
-  """this function would check if the game has ended in a tie 
+    """this function would check if the game has ended in a tie 
   (i.e. all spots on the board are filled with no winner)."""
-  pass
+    for row in board:
+        for val in row:
+            if val == '':
+                return False
+    return True
 
 def reset_board():
-  """Set the board to the initial state after each game"""
+   """Set the board to the initial state after each game"""
    display_board(board)
 
 def play_again():
