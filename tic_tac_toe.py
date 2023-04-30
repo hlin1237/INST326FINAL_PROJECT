@@ -12,12 +12,12 @@ def display_board(board):
   tic-tac-toe board and print it out to the console in a user-friendly 
   format """
   root = tk.Tk()
-    root.title("Board")
-    for row in range(len(board)):
+  root.title("Board")
+  for row in range(len(board)):
         for col in range(len(board[row])):
             label = tk.Label(root, text=board[row][col], font=("Arial", 24), width=3, height=1, borderwidth=1, relief="solid")
             label.grid(row=row, column=col)
-    root.mainloop()
+  root.mainloop()
 
 def get_player_move(board, player):
   """this function would prompt the user for their move,
