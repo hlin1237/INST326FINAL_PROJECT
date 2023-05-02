@@ -78,13 +78,68 @@ def reset_board():
    display_board(board)
 
 def play_again():
-  """this function would prompt the user if they want to 
-  play again after the game has ended and return a boolean 
-  value indicating their choice."""
-  pass
+    """Prompt the user if they want to play again and return a boolean value indicating their choice"""
+    root = tk.Tk()
+    root.title("Play Again?")
+    
+    def on_yes():
+        root.destroy()
+        return True
+    
+    def on_no():
+        root.destroy()
+        return False
+    
+    tk.Label(root, text="Do you want to play again?").pack()
+    
+    yes_button = tk.Button(root, text="Yes", command=on_yes)
+    yes_button.pack(side="left", padx=10, pady=10)
+    
+    no_button = tk.Button(root, text="No", command=on_no)
+    no_button.pack(side="right", padx=10, pady=10)
+    
+    root.mainloop()
+
 
 def main():
-  """this function would handle the main game loop,
-  calling the other functions as necessary and checking
-  for win/loss/tie conditions to end the game."""
-  pass
+    """Handle the main game loop, calling the other functions as necessary and checking for win/loss/tie conditions to end the game"""
+    player = 'X'
+    display_board(board)
+    while True:
+        get_player_move(board, player)
+        display_board(board)
+        if check_win(board):
+            print(f"{player} wins!")
+            if not play_again():
+                break
+            else:
+                reset_board()
+                continue
+        elif check_tie(board):
+            print("It's a tie!")
+            if not play_again():
+                break
+            else:
+                reset_board()
+                continue
+        player = 'O' if player == 'X' else 'X'
+        if player == 'X':
+            computer_move = get_computer_move(board, player)
+            board[computer_move[0]][computer_move[1]] = player
+            display_board(board)
+            if check_win(board):
+                print(f"{player} wins!")
+                if not play_again():
+                    break
+                else:
+                    reset_board()
+                    continue
+            elif check_tie(board):
+                print("It's a tie!")
+                if not play_again():
+                    break
+                else:
+                    reset_board()
+                    continue
+            player = 'O'
+
