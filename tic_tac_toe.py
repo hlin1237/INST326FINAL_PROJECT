@@ -1,11 +1,9 @@
-
-#function 1
-
 import tkinter as tk
+import random
 
-board = [['', '', ''],
-         ['', '', ''],
-         ['', '', '']]
+board = [['', '', ''], ['', '', ''], ['', '', '']]
+players = ['X', 'O']
+current_player = None
 
 def display_board(board):
   """  this function would take a 3x3 list representing the
@@ -22,14 +20,30 @@ def display_board(board):
 def get_player_move(board, player):
   """this function would prompt the user for their move,
   validate the input, and update the board with the move if it is valid。"""
-  pass
+  while True:
+    try:
+      row = int(input(f"{player}'s turn. Please enter row number (1-3): ")) - 1
+      col = int(input(f"{player}'s turn. Please enter column number (1-3): ")) - 1
+      if board[row][col] == '':
+        board[row][col] = player
+        break
+      else:
+        print("That spot is already taken. Please choose another spot.")
+    except (ValueError, IndexError):
+      print("Invalid input. Please enter a number between 1 and 3.")
 
 def get_computer_move(board, player):
   """this function would generate a move for the computer player,
   using some AI algorithm to choose the best move based on the 
   current board state, if the player decide to play against the AI"""
-  pass
-  
+  # simple strategy: choose a random empty spot on the board
+  while True:
+    row = random.randint(0, 2)
+    col = random.randint(0, 2)
+    if board[row][col] == '':
+      board[row][col] = player
+      break
+
 def check_win(board):
     """ this function would check if either player has won the game
   by checking all possible win conditions (3 in a row horizontally,
@@ -59,6 +73,8 @@ def check_tie(board):
 
 def reset_board():
    """Set the board to the initial state after each game"""
+   global board
+   board = [['', '', ''], ['', '', ''], ['', '', '']]
    display_board(board)
 
 def play_again():
