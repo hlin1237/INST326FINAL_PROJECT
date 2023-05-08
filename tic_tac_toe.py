@@ -1,145 +1,108 @@
-import tkinter as tk
-import random
+from tkinter import *
 
-board = [['', '', ''], ['', '', ''], ['', '', '']]
-players = ['X', 'O']
-current_player = None
+def next_turn(row, col):
+    global player
+    if buttons[row][col]['text'] == "" and check_winner() is False:
+        if player == players[0]:
+            buttons[row][col]['text'] = player
+            if check_winner() is False:
+                player = players[1]
+                
+                ai_play()
+            elif check_winner() is True:
+                label.config(text = (players[0] + " wins"))
+                label.pack(side ="top")
+            elif check_winner() == "Tie":
+                label.config(text = "Tie")
+                label.pack(side ="top")
+            else:
+            
+                label.config(text = "Tie")
+                label.pack(side ="top")
 
-def display_board(board):
-  """  this function would take a 3x3 list representing the
-  tic-tac-toe board and print it out to the console in a user-friendly 
-  format """
-  root = tk.Tk()
-  root.title("Board")
-  for row in range(len(board)):
-        for col in range(len(board[row])):
-            label = tk.Label(root, text=board[row][col], font=("Arial", 24), width=3, height=1, borderwidth=1, relief="solid")
-            label.grid(row=row, column=col)
-  root.mainloop()
-
-def get_player_move(board, player):
-  """this function would prompt the user for their move,
-  validate the input, and update the board with the move if it is valid。"""
-  while True:
-    try:
-      row = int(input(f"{player}'s turn. Please enter row number (1-3): ")) - 1
-      col = int(input(f"{player}'s turn. Please enter column number (1-3): ")) - 1
-      if board[row][col] == '':
-        board[row][col] = player
-        break
-      else:
-        print("That spot is already taken. Please choose another spot.")
-    except (ValueError, IndexError):
-      print("Invalid input. Please enter a number between 1 and 3.")
-
-def get_computer_move(board, player):
-  """this function would generate a move for the computer player,
-  using some AI algorithm to choose the best move based on the 
-  current board state, if the player decide to play against the AI"""
-  # simple strategy: choose a random empty spot on the board
-  while True:
-    row = random.randint(0, 2)
-    col = random.randint(0, 2)
-    if board[row][col] == '':
-      board[row][col] = player
-      break
-
-def check_win(board):
-    """ this function would check if either player has won the game
-  by checking all possible win conditions (3 in a row horizontally,
-  vertically, or diagonally)."""
-    
-    for row in board:
-        if row[0] == row[1] == row[2] != '':
+def check_winner():
+    for row in range(3):
+        if buttons[row][0]['text'] == buttons[row][1]['text'] == buttons[row][2]['text'] !="":
             return True
-        
-    for col in range(len(board[0])):
-        if board[0][col] == board[1][col] == board[2][col] != '':
+    for col in range(3):
+        if buttons[0][col]['text'] == buttons[1][col]['text'] == buttons[2][col]['text'] !="":
             return True
-        
-    if board[0][0] == board[1][1] == board[2][2] != '' or board[0][2] == board[1][1] == board[2][0] != '':
-        return True
-    
-    return False
-
-def check_tie(board):
-    """this function would check if the game has ended in a tie 
-  (i.e. all spots on the board are filled with no winner)."""
-    for row in board:
-        for val in row:
-            if val == '':
-                return False
-    return True
-
-def reset_board():
-   """Set the board to the initial state after each game"""
-   global board
-   board = [['', '', ''], ['', '', ''], ['', '', '']]
-   display_board(board)
-
-def play_again():
-    """Prompt the user if they want to play again and return a boolean value indicating their choice"""
-    root = tk.Tk()
-    root.title("Play Again?")
-    
-    def on_yes():
-        root.destroy()
-        return True
-    
-    def on_no():
-        root.destroy()
+    if buttons[0][0]['text'] == buttons[1][1]['text'] == buttons[2][2]['text'] != "":
+        return True 
+    elif buttons[0][2]['text'] == buttons[1][1]['text'] == buttons[2][0]['text'] != "":
+        return True 
+    elif check_tie() is False:
+        return "Tie"
+    else:
         return False
-    
-    tk.Label(root, text="Do you want to play again?").pack()
-    
-    yes_button = tk.Button(root, text="Yes", command=on_yes)
-    yes_button.pack(side="left", padx=10, pady=10)
-    
-    no_button = tk.Button(root, text="No", command=on_no)
-    no_button.pack(side="right", padx=10, pady=10)
-    
-    root.mainloop()
+
+def check_tie():
+    spaces = 9
+    for row in range(3):
+        for col in range(3):
+            if buttons[row][col]["text"] != "":
+                spaces -=1
+    if spaces == 0:
+        return False
+    else:
+        return True
+
+def new_game():
+    global player
+    player = "x"
+    label.config(text=player + " turn")
+    for row in range(3):
+        for col in range(3):
+            buttons[row][col].config(text="")
+            buttons[row][col].config(state="normal")
+
+def ai_play():
+    global player
+    for row in range(3):
+        for col in range(3):
+            if buttons[row][col]["text"] == "":
+                buttons[row][col]["text"] = player
+                buttons[row][col].config(state="disabled")
+                if check_winner() is False:
+                    player = players[0]
+                elif check_winner() is True:
+                    label.config(text=(players[1] + " wins"))
+                    label.pack(side ="top")
+                elif check_winner() == "Tie":
+                    label.config(text="Tie")
+                    label.pack(side ="top")
+                return
+
+def board():
+    global players, player, buttons, label
+    window = Tk()
+    window.title("Tic-Tac-Toe")
+
+    players = ["x", "ai"]
+    player = "x"
+
+    buttons = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+    label = Label(text = "Tic-Tac-Toe", font = ('consolas', 40))
+    label.pack(side ="top")
+    reset_button = Button(text="restart", font = ('consolas', 20), command =new_game)
+    reset_button.pack(side = "top")
 
 
-def main():
-    """Handle the main game loop, calling the other functions as necessary and checking for win/loss/tie conditions to end the game"""
-    player = 'X'
-    display_board(board)
-    while True:
-        get_player_move(board, player)
-        display_board(board)
-        if check_win(board):
-            print(f"{player} wins!")
-            if not play_again():
-                break
-            else:
-                reset_board()
-                continue
-        elif check_tie(board):
-            print("It's a tie!")
-            if not play_again():
-                break
-            else:
-                reset_board()
-                continue
-        player = 'O' if player == 'X' else 'X'
-        if player == 'X':
-            computer_move = get_computer_move(board, player)
-            board[computer_move[0]][computer_move[1]] = player
-            display_board(board)
-            if check_win(board):
-                print(f"{player} wins!")
-                if not play_again():
-                    break
-                else:
-                    reset_board()
-                    continue
-            elif check_tie(board):
-                print("It's a tie!")
-                if not play_again():
-                    break
-                else:
-                    reset_board()
-                    continue
-            player = 'O'
+    frame = Frame(window)
+    frame.pack()
 
+    for row in range(3):
+        for column in range(3):
+            buttons[row][column] = Button(frame, text ="",
+            font = ('consolas', 40), width=5, height = 2, command = lambda row=row, column=column: next_turn(row, column) )
+
+            buttons[row][column].grid(row=row, column=column)
+
+    # go find out what this mean later
+    window.mainloop()
+
+
+
+
+if __name__ == '__main__':
+    board()
