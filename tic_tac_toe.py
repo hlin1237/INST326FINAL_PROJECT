@@ -72,7 +72,15 @@ def ai_play():
                     label.config(text="Tie")
                     label.pack(side ="top")
                 return
+def make_buttons(frame):
+    
+      for row in range(3):
+        for column in range(3):
+            buttons[row][column] = Button(frame, text ="",
+            font = ('consolas', 40), width=5, height = 2, command = lambda row=row, column=column: next_turn(row, column) )
 
+            buttons[row][column].grid(row=row, column=column)
+            
 def board():
     global players, player, buttons, label
     window = Tk()
@@ -90,13 +98,9 @@ def board():
 
     frame = Frame(window)
     frame.pack()
-
-    for row in range(3):
-        for column in range(3):
-            buttons[row][column] = Button(frame, text ="",
-            font = ('consolas', 40), width=5, height = 2, command = lambda row=row, column=column: next_turn(row, column) )
-
-            buttons[row][column].grid(row=row, column=column)
+    
+    
+    make_buttons(frame)
 
     # go find out what this mean later
     window.mainloop()
