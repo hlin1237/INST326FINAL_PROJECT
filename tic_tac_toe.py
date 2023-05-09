@@ -86,9 +86,11 @@ def make_buttons(frame):
         Arg:
             Frame '(tkinter Frame): Frame where the buttons will be placed
         Purposes:
-            Creates the 3 x 3 grid of buttons for the game board """
+            Creates the 3 x 3 grid of buttons for the game board 
+            
+    """
     
-      for row in range(3):
+    for row in range(3):
         for column in range(3):
             buttons[row][column] = Button(frame, text ="",
             font = ('consolas', 40), width=5, height = 2, command = lambda row=row, column=column: next_turn(row, column) )
@@ -96,11 +98,13 @@ def make_buttons(frame):
             buttons[row][column].grid(row=row, column=column)
             
 def board():
-    "" 
+    """ 
     Arg:
             None
         Purpose: 
-            Initializes the game board and starts the game """
+            Initializes the game board and starts the game 
+    
+    """
     
     global players, player, buttons, label
     window = Tk()
