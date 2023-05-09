@@ -1,6 +1,15 @@
 from tkinter import *
 
 def next_turn(row, col):
+    """ 
+        Arg:
+            row (int): row number of the button clicked
+            col (int): column number of the button clicked
+        purpose:
+            Determine the next player's tun and updates the game board accordingly
+        Negative impact: 
+            None
+    """
     global player
     if buttons[row][col]['text'] == "" and check_winner() is False:
         if player == players[0]:
@@ -73,6 +82,11 @@ def ai_play():
                     label.pack(side ="top")
                 return
 def make_buttons(frame):
+    """
+        Arg:
+            Frame '(tkinter Frame): Frame where the buttons will be placed
+        Purposes:
+            Creates the 3 x 3 grid of buttons for the game board """
     
       for row in range(3):
         for column in range(3):
@@ -82,6 +96,12 @@ def make_buttons(frame):
             buttons[row][column].grid(row=row, column=column)
             
 def board():
+    "" 
+    Arg:
+            None
+        Purpose: 
+            Initializes the game board and starts the game """
+    
     global players, player, buttons, label
     window = Tk()
     window.title("Tic-Tac-Toe")
@@ -102,7 +122,7 @@ def board():
     
     make_buttons(frame)
 
-    # go find out what this mean later
+  
     window.mainloop()
 
 
