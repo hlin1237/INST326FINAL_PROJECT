@@ -32,6 +32,15 @@ def next_turn(row, col):
                 label.pack(side ="top")
 
 def check_winner():
+    """
+    Checks if there is a winner in the Tic Tac Toe game
+
+    This function checks if there is a winner by examining the values of the text attribute of the buttons in the Tic Tac Toe game board
+
+    Returns:
+        bool or str: Returns True if there is a winner, "Tie" if the game is tied, and False otherwise
+    """
+    
     for row in range(3):
         if buttons[row][0]['text'] == buttons[row][1]['text'] == buttons[row][2]['text'] !="":
             return True
