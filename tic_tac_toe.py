@@ -57,6 +57,15 @@ def check_winner():
         return False
 
 def check_tie():
+    """Check if the Tic Tac Toe game is tied.
+
+    This function checks if the Tic Tac Toe game board is full and there is no winner. 
+    If there are no more empty spaces on the board and there is no winner, the function returns False.
+    Otherwise, it returns True
+
+    Returns:
+        bool: Returns False if the game is tied, and True otherwise
+    """
     spaces = 9
     for row in range(3):
         for col in range(3):
