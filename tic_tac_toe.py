@@ -1,4 +1,6 @@
 from tkinter import *
+from tkinter import messagebox
+import webbrowser
 
 def next_turn(row, col):
     """ 
@@ -97,6 +99,26 @@ def make_buttons(frame):
 
             buttons[row][column].grid(row=row, column=column)
             
+def instruction():
+    
+    message = "Welcome to Tic-Tac-Toe!\n\n"
+    message += "The game is played on a 3x3 grid. You will play as 'X' and the AI will play as 'ai'. "
+    message += "The goal is to get three of your symbols in a row, column, or diagonal.\n\n"
+    message += "Pay attention to the AI's moves. It will try to anticipate your strategy and block your winning moves.\n\n"
+    message += "Think strategically and plan your moves carefully. Consider different possibilities and potential winning patterns.\n\n"
+    message += "Remember, the key to winning is to think ahead and outsmart the AI.\n\n"
+    message += "(If you still have trouble understanding how to play Tic-Tac-Toe click yes and more instruction will be given.) \n\n"
+    message += "Enjoy playing Tic-Tac-Toe and may the best strategist win!"
+    def callback(event):
+        webbrowser.open_new("https://www.youtube.com/watch?v=3qzcAMShotQ")
+
+    root = Tk()
+    root.withdraw()
+    result = messagebox.askquestion("Instructions", message, icon='info')
+
+    if result == 'yes':
+        webbrowser.open('https://www.youtube.com/watch?v=3qzcAMShotQ')
+            
 def board():
     """ 
     Arg:
@@ -118,6 +140,12 @@ def board():
     label.pack(side ="top")
     reset_button = Button(text="restart", font = ('consolas', 20), command =new_game)
     reset_button.pack(side = "top")
+    
+    instruction_button = Button(text="instruction", font = ('consolas', 10), command = instruction)
+    instruction_button.pack(side="top", anchor="ne")
+    frame = Frame(window)
+    frame.pack()
+    
 
 
     frame = Frame(window)
