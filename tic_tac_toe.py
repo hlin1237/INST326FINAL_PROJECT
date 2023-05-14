@@ -4,10 +4,10 @@ import webbrowser
 
 def next_turn(row, col):
     """ 
-        Arg:
+        Args:
             row (int): row number of the button clicked
             col (int): column number of the button clicked
-        purpose:
+        Purposes:
             Determine the next player's tun and updates the game board accordingly
         Negative impact: 
             None
@@ -33,12 +33,13 @@ def next_turn(row, col):
 
 def check_winner():
     """
-    Checks if there is a winner in the Tic Tac Toe game
-
-    This function checks if there is a winner by examining the values of the text attribute of the buttons in the Tic Tac Toe game board
-
-    Returns:
-        bool or str: Returns True if there is a winner, "Tie" if the game is tied, and False otherwise
+        Args: 
+            None
+        Purposes:
+            Checks if there is a winner in the Tic Tac Toe game
+            This function checks if there is a winner by examining the values of the text attribute of the buttons in the Tic Tac Toe game board
+        Returns:
+            bool or str: Returns True if there is a winner, "Tie" if the game is tied, and False otherwise
     """
     
     for row in range(3):
@@ -69,14 +70,16 @@ def check_winner():
         return False
 
 def check_tie():
-    """Check if the Tic Tac Toe game is tied.
-
-    This function checks if the Tic Tac Toe game board is full and there is no winner. 
-    If there are no more empty spaces on the board and there is no winner, the function returns False.
-    Otherwise, it returns True
-
-    Returns:
-        bool: Returns False if the game is tied, and True otherwise
+    """
+        Args: 
+            none
+        Purposes:
+            Check if the Tic Tac Toe game is tied.
+            This function checks if the Tic Tac Toe game board is full and there is no winner. 
+            If there are no more empty spaces on the board and there is no winner, the function returns False.
+            Otherwise, it returns True
+        Returns:
+            bool: Returns False if the game is tied, and True otherwise
     """
     spaces = 9
     for row in range(3):
@@ -90,10 +93,11 @@ def check_tie():
 
 def new_game():
     """
-        Arg: None
-        Purpose: This function helps reset a new game state for the tic tac toe board.
-                 The for loop in this function is what is used to reset the buttons on the interface.
-    
+        Args: 
+            None
+        Purposes: 
+            This function helps reset a new game state for the tic tac toe board.
+            The for loop in this function is what is used to reset the buttons on the interface.
     """
     
     global player
@@ -105,6 +109,13 @@ def new_game():
             buttons[row][col].config(state="normal")
 
 def ai_play():
+    """
+        Args: 
+            None
+        Purposes: 
+            This function simulates moves from the AI. 
+    """
+    
     global player
     for row in range(3):
         for col in range(3):
@@ -122,11 +133,10 @@ def ai_play():
                 return
 def make_buttons(frame):
     """
-        Arg:
+        Args:
             Frame '(tkinter Frame): Frame where the buttons will be placed
         Purposes:
-            Creates the 3 x 3 grid of buttons for the game board 
-            
+            Creates the 3 x 3 grid of buttons for the game board    
     """
     
     for row in range(3):
@@ -138,11 +148,11 @@ def make_buttons(frame):
             
 def instruction():
     """
-        Arg: 
+        Args: 
             none
-        Purpose: Creates a popup button with instructions for users on how to operate this tic tac toe game.
-                 There is also a video link if you click yes to add further help for a user on playing tic tac toe. 
-    
+        Purposes: 
+            Creates a popup button with instructions for users on how to operate this tic tac toe game.
+            There is also a video link if you click yes to add further help for a user on playing tic tac toe. 
     """
     
     message = "Welcome to Tic-Tac-Toe!\n\n"
@@ -165,11 +175,10 @@ def instruction():
             
 def board():
     """ 
-    Arg:
+        Args:
             None
-        Purpose: 
+        Purposes: 
             Initializes the game board and starts the game 
-    
     """
     
     global players, player, buttons, label
