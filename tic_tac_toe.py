@@ -118,6 +118,13 @@ def make_buttons(frame):
             buttons[row][column].grid(row=row, column=column)
             
 def instruction():
+    """
+        Arg: 
+            none
+        
+        Purpose: Creates a popup button with instructions for users on how to operate this tic tac toe game.
+                 There is also a video link if you click yes to add further help for a user on playing tic tac toe. 
+    """
     
     message = "Welcome to Tic-Tac-Toe!\n\n"
     message += "The game is played on a 3x3 grid. You will play as 'X' and the AI will play as 'ai'. "
