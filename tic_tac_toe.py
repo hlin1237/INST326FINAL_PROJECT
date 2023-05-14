@@ -2,8 +2,6 @@ from tkinter import *
 from tkinter import messagebox
 import webbrowser
 
-
-
 def next_turn(row, col):
     """ 
         Args:
