@@ -101,7 +101,7 @@ def new_game():
     label.config(text=player + " turn")
     for row in range(3):
         for col in range(3):
-            buttons[row][col].config(text="")
+            buttons[row][col].config(text="",bg ="#F0F0F0")
             buttons[row][col].config(state="normal")
 
 def ai_play():

@@ -22,6 +22,7 @@ class TestTicTacToe(unittest.TestCase):
         pass
     
     def test_ai_play(self):
+        pass
     
     def test_make_buttons(self):
         pass
