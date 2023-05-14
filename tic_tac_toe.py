@@ -43,14 +43,26 @@ def check_winner():
     
     for row in range(3):
         if buttons[row][0]['text'] == buttons[row][1]['text'] == buttons[row][2]['text'] !="":
+            buttons[row][0].config(bg="green")
+            buttons[row][1].config(bg="green")
+            buttons[row][2].config(bg="green")
             return True
     for col in range(3):
         if buttons[0][col]['text'] == buttons[1][col]['text'] == buttons[2][col]['text'] !="":
+            buttons[0][col].config(bg="green")
+            buttons[1][col].config(bg="green")
+            buttons[2][col].config(bg="green")
             return True
     if buttons[0][0]['text'] == buttons[1][1]['text'] == buttons[2][2]['text'] != "":
-        return True 
+          buttons[0][0].config(bg="green")
+          buttons[1][1].config(bg="green")
+          buttons[2][2].config(bg="green")
+          return True 
     elif buttons[0][2]['text'] == buttons[1][1]['text'] == buttons[2][0]['text'] != "":
-        return True 
+         buttons[0][2].config(bg="green")
+         buttons[1][1].config(bg="green")
+         buttons[2][0].config(bg="green")
+         return True 
     elif check_tie() is False:
         return "Tie"
     else:
@@ -77,6 +89,13 @@ def check_tie():
         return True
 
 def new_game():
+    """
+        Arg: None
+        Purpose: This function helps reset a new game state for the tic tac toe board.
+                 The for loop in this function is what is used to reset the buttons on the interface.
+    
+    """
+    
     global player
     player = "x"
     label.config(text=player + " turn")
@@ -121,9 +140,9 @@ def instruction():
     """
         Arg: 
             none
-        
         Purpose: Creates a popup button with instructions for users on how to operate this tic tac toe game.
                  There is also a video link if you click yes to add further help for a user on playing tic tac toe. 
+    
     """
     
     message = "Welcome to Tic-Tac-Toe!\n\n"
