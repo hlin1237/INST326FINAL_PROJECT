@@ -1,23 +1,42 @@
-# INST326FINAL_PROJECT
-Project Team: Huimin Lin, Muneeb Sahibzada, Justine Uyan, Kelly Le,
+# Tic-Tac-Toe Game
 
+## Project Team:
+- **Huimin Lin**
+- **Muneeb Sahibzada**
+- **Justine Uyan**
+- **Kelly Le**
 
-This project of ours is a tic-tac-toe game. Our program gives a user interface to play the game. 
-To run the game, the python file name can be run in the command line terminal.
-No other inputs on the command line are needed in order to play the game. Once the program is open, the board is set up with all nine square open. 
-There is also an optional instructions tab that gives extra information for the user. The first move will be the user and then the computer will follow along. 
-The outputs of the program are simply if the user wins, or the computer ai wins, or if it is a tie. 
-After an end state of the board is reached the board can be reset with the restart button.
+## Project Overview:
+This project is a classic **Tic-Tac-Toe** game developed using Python. It provides a graphical user interface (GUI) for an interactive gameplay experience. The user competes against the computer AI, alternating turns to mark squares on the game board until a winner is determined or the game ends in a tie.
 
+## How to Run:
+To start the game, simply run the `tic_tac_toe.py` Python file in a command line terminal:
+```bash
+python tic_tac_toe.py
 
-Sources
+## Features:
+- **User Interface**: The game features a 3x3 grid where both the player and the computer take turns marking their moves.
+- **Instructions Tab**: An optional tab is available that provides gameplay instructions and tips for new players.
+- **Reset Option**: Once the game concludes (whether it's a win, loss, or tie), players can restart the game using the restart button without needing to re-run the program.
 
-Python. (n.d.). Tkinter - Python interface to TCL/TK. Python documentation. 
-    https://docs.python.org/3/library/tkinter.html#tkinter-modules 
+## Gameplay:
+- **The user makes the first move**, followed by the computer AI.
+- **The game outputs the result at the end**: win, loss, or tie.
 
-        As we used tkinter to base our game's interface we referenced the official tkinter module documentation alot to check for codes to use.
+## Sources:
+1. **Python Tkinter Documentation**  
+   We utilized the Tkinter library for building the game’s graphical interface. Official Tkinter documentation was referenced for code implementation:
+   - [Tkinter Documentation](https://docs.python.org/3/library/tkinter.html#tkinter-modules)
+   
+2. **YouTube Tutorial on Tic-Tac-Toe**  
+   The instructional tab within the game references an external YouTube tutorial that provides basic rules and strategies for playing Tic-Tac-Toe:
+   - [How to Play Tic-Tac-Toe](https://www.youtube.com/watch?v=3qzcAMShotQ)
 
-wikiHow. (2020, April 7). How to play tic tac toe. YouTube. https://www.youtube.com/watch?v=3qzcAMShotQ 
-        
-        This youtube video source was used as part of our interface to just give external information on tic tac toe. 
-        It is an option the user can go to in the instructions popup. 
+## Sources:
+1. **Python Tkinter Documentation**  
+   We utilized the Tkinter library for building the game’s graphical interface. Official Tkinter documentation was referenced for code implementation:
+   - [**Tkinter Documentation**](https://docs.python.org/3/library/tkinter.html#tkinter-modules)
+   
+2. **YouTube Tutorial on Tic-Tac-Toe**  
+   The instructional tab within the game references an external YouTube tutorial that provides basic rules and strategies for playing Tic-Tac-Toe:
+   - [**How to Play Tic-Tac-Toe**](https://www.youtube.com/watch?v=3qzcAMShotQ)
